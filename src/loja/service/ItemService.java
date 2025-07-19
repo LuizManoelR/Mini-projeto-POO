@@ -2,8 +2,6 @@ package loja.service;
 
 import loja.model.Item;
 import loja.model.Produto;
-import loja.model.Venda;
-
 
 public class ItemService {
     

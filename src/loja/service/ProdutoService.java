@@ -1,71 +1,81 @@
 package loja.service;
 
 import loja.model.Produto;
+import loja.utils.Operacoes;
+import java.math.BigDecimal;
 
 public class ProdutoService {
 
-    private float margem;
-    private float icms;
+    private BigDecimal margem;
+    private BigDecimal icms;
 
-    public ProdutoService(Float margem , Float icms){
+    public ProdutoService(Object margem , Object icms){
 
-        this.margem = (margem != null) ? margem : 0.30f;
-        this.icms = (icms != null) ? icms : 0.18f;
+        
+
+        this.margem = (margem != null) ? Operacoes.toBigDecimal(margem) : new BigDecimal("0.30");
+        this.icms = (icms != null) ? Operacoes.toBigDecimal(icms) : new BigDecimal("0.18");
             
     }
 
-    public void setMargem(Float margem){
+    public void setMargem(BigDecimal margem){
 
-        this.margem = (margem != null) ? margem : 0.30f;
+        this.margem = (margem != null) ? Operacoes.toBigDecimal(margem) : new BigDecimal("0.30");
     }
 
-    public void setIcms(Float icms){
+    public void setIcms(BigDecimal icms){
 
-        this.icms = (icms != null) ? icms : 0.18f;
+        this.icms = (icms != null) ? Operacoes.toBigDecimal(icms) : new BigDecimal("0.18");
 
     }
 
-    public float getMargem(){
+    public BigDecimal getMargem(){
 
         return margem;
 
     }
 
-    public float getIcms(){
+    public BigDecimal getIcms(){
 
         return icms;
     }
 
 
-    public Produto criarProduto(String nome, int estoque, float precoCusto){
+    public Produto criarProduto(String nome, int estoque, Object precoCusto){
+
+        BigDecimal precoVenda = Operacoes.dividir(precoCusto, Operacoes.subtrair(1, margem));
+        BigDecimal precoCustoAux = Operacoes.toBigDecimal(precoCusto);
 
         if(estoque >= 0){
             
-            return new Produto(nome, estoque,precoCusto/(1-margem) *icms ,precoCusto, precoCusto/(1-margem));
+            return new Produto(nome, estoque,Operacoes.multiplicar(precoVenda, icms) ,precoCustoAux, precoVenda);
 
-        }else return new Produto(nome, 0 , precoCusto/(1-margem)*icms,precoCusto, precoCusto/(1-margem));
+        }else return new Produto(nome, 0 , Operacoes.multiplicar(precoVenda, icms) ,precoCustoAux, precoVenda);
 
     }
 
-    public Produto criarProduto(String nome, int estoque, float precoCusto, float precoVenda){
-    
+    public Produto criarProduto(String nome, int estoque, Object precoCusto, Object precoVenda){
         
+        BigDecimal precoVendaPadrão = Operacoes.dividir(precoCusto, Operacoes.subtrair(1, margem));
+        BigDecimal precoCustoBD = Operacoes.toBigDecimal(precoCusto);
+        BigDecimal precoVendaBD = Operacoes.toBigDecimal(precoVenda);
+
         if(estoque >= 0){
 
-            if(precoVenda >= precoCusto/(1-margem)){
+            if(Operacoes.toBigDecimal(precoVenda).compareTo(precoVendaPadrão) > 0){
     
-                return new Produto(nome, estoque,precoVenda *icms ,precoCusto, precoVenda);
+                return new Produto(nome, estoque,Operacoes.multiplicar(precoVenda, icms) ,precoCustoBD, precoVendaBD);
     
-             }else return new Produto(nome, estoque,precoCusto* icms ,precoCusto, precoCusto);
+             }else return new Produto(nome, estoque,Operacoes.multiplicar(precoVenda, icms) ,precoCustoBD, precoCustoBD);
             
 
         }else{
 
-            if(precoVenda >= precoCusto/(1-margem)){
+            if(Operacoes.toBigDecimal(precoVenda).compareTo(precoVendaPadrão) > 0){
     
-                return new Produto(nome, 0,precoVenda *icms ,precoCusto, precoVenda);
+                return new Produto(nome, 0,Operacoes.multiplicar(precoVenda, icms) ,precoCustoBD, precoVendaBD);
     
-             }else return new Produto(nome, 0,precoCusto* icms ,precoCusto, precoCusto);
+             }else return new Produto(nome, 0,Operacoes.multiplicar(precoVenda, icms) ,precoCustoBD, precoCustoBD);
 
         }
 

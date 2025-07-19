@@ -1,6 +1,10 @@
 package loja.model;
 
+import java.math.BigDecimal;
+
 import loja.service.ItemService;
+import loja.service.ProdutoService;
+import loja.utils.Operacoes;
 
 public class Venda{
 
@@ -128,13 +132,13 @@ public class Venda{
 
     }
 
-    public float valorTotal(){
+    public BigDecimal valorTotal(){
 
-        float n = 0;
+        BigDecimal n = new BigDecimal("0");
 
         for(int i = 0; i < tamanho; i++){
 
-            n += carrinho[i].valorTotal();
+            n = Operacoes.somar(n, carrinho[i].valorTotal());
             
         }
         return n;
@@ -153,9 +157,27 @@ public class Venda{
 
    public static void main(String [] args){
 
-        
-        
 
+        ProdutoService ps = new ProdutoService(null, null);
+
+        Produto p1 = ps.criarProduto("cafe", 10, 10.5f);
+        Produto p2 = ps.criarProduto("arroz", 10, 25.5f);
+        
+        p1.exibir();
+        p2.exibir();
+
+        Item i1 = ItemService.criarItem(p1,2);
+        Item i2 = ItemService.criarItem(p2,2);
+
+        i1.exibir();
+        i2.exibir();
+
+        Venda v1 = new Venda();
+
+        v1.addItem(i1);
+        v1.addItem(i2);
+
+        v1.exibir();
     }
 
 

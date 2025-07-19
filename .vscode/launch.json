@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Venda",
+      "request": "launch",
+      "mainClass": "loja.model.Venda",
+      "projectName": "appvendas_f0ce33ac"
+    },
+    {
+      "type": "java",
       "name": "ProdutoService",
       "request": "launch",
       "mainClass": "loja.service.ProdutoService"

@@ -1,5 +1,8 @@
 package loja.model;
 
+import java.math.BigDecimal;
+import loja.utils.Operacoes;
+
 public class Produto{
 
     private String codigo;
@@ -8,15 +11,15 @@ public class Produto{
 
     private int estoque;
 
-    private float precoCusto;
+    private BigDecimal precoCusto;
 
-    private float precoVenda;
+    private BigDecimal precoVenda;
 
-    private float icms;
+    private BigDecimal icms;
 
     private static int ultimo = 1;
 
-    public Produto(String nome, int estoque, float icms,float precoCusto, float precoVenda){
+    public Produto(String nome, int estoque, BigDecimal icms,BigDecimal precoCusto, BigDecimal precoVenda){
 
         this.codigo = String.format("%04d", ultimo++);
 
@@ -41,18 +44,18 @@ public class Produto{
         this.estoque = estoque;
     }
 
-    public void setPrecoCusto(float precoCusto){
+    public void setPrecoCusto(BigDecimal precoCusto){
 
         this.precoCusto = precoCusto;
     }
 
-    public void setPrecoVenda(float precoVenda){
+    public void setPrecoVenda(BigDecimal precoVenda){
         
         this.precoVenda = precoVenda;
 
     }
 
-    public void setIcms(float icms){this.icms = icms;}
+    public void setIcms(BigDecimal icms){this.icms = icms;}
     
     public String getCodigo(){
 
@@ -72,27 +75,27 @@ public class Produto{
 
     }
 
-    public float getPrecoCusto(){
+    public BigDecimal getPrecoCusto(){
 
         return this.precoCusto;
 
     }
 
-    public float getPrecoVenda(){
+    public BigDecimal getPrecoVenda(){
 
         return this.precoVenda;
 
     }
 
-    public float getIcms(){
+    public BigDecimal getIcms(){
 
         return icms;
 
     }
 
-    public float calcularMargemLucro(){
+    public BigDecimal calcularMargemLucro(){
 
-        return (this.precoVenda - this.precoCusto)/this.precoVenda;
+        return Operacoes.dividir(Operacoes.subtrair(this.precoVenda , this.precoCusto), this.precoVenda);
 
     }
 
@@ -106,7 +109,7 @@ public class Produto{
             "Preco Venda    : R$ %.2f\n" +
             "Icms           : R$ %.2f\n" +
             "Margem de Lucro: %.1f%%\n",
-            nome, codigo, estoque, precoCusto, precoVenda,icms,this.calcularMargemLucro()*100
+            nome, codigo, estoque, precoCusto, precoVenda,icms,Operacoes.multiplicar(this.calcularMargemLucro(),100)
             );
     }
 

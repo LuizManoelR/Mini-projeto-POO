@@ -1,5 +1,9 @@
 package loja.model;
 
+import java.math.BigDecimal;
+
+import loja.utils.Operacoes;
+
 public class Item{
 
     private Produto Produto;
@@ -37,9 +41,9 @@ public class Item{
 
     }
 
-    public float valorTotal(){
+    public BigDecimal valorTotal(){
 
-        return this.Produto.getPrecoVenda() * this.qtd;
+        return Operacoes.multiplicar(this.Produto.getPrecoVenda(), this.qtd);
 
     }
 
