@@ -32,7 +32,6 @@ public class ClienteService {
     public boolean alterarCliente(String cpf, String novoNome, String novoEmail, String novoTelefone) {
     Cliente clienteExistente = buscarPorCpf(cpf);
     if (clienteExistente != null) {
-        // Atualiza os dados
         clienteExistente.setNome(novoNome);
         clienteExistente.setEmail(novoEmail);
         clienteExistente.setTelefone(novoTelefone);
