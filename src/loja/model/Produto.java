@@ -21,7 +21,7 @@ public class Produto{
 
     public Produto(String nome, int estoque, BigDecimal icms,BigDecimal precoCusto, BigDecimal precoVenda){
 
-        this.codigo = String.format("%04d", ultimo++);
+        this.codigo = String.format("P%04d", ultimo++);
 
         this.nome = nome;
 

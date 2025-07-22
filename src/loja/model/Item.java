@@ -41,9 +41,21 @@ public class Item{
 
     }
 
-    public BigDecimal valorTotal(){
+    public BigDecimal subTotal(){
 
         return Operacoes.multiplicar(this.Produto.getPrecoVenda(), this.qtd);
+
+    }
+
+    public BigDecimal icmsTotal(){
+
+        return Operacoes.multiplicar(this.Produto.getIcms(), this.qtd);
+
+    }
+
+    public BigDecimal valorTotal(){
+
+        return Operacoes.somar(subTotal(), icmsTotal());
 
     }
 
@@ -65,9 +77,12 @@ public class Item{
             "Produto    : %s\n" +
             "Codigo     : %s\n" +
             "Quantidade : %d unidades\n" +
-            "Valor      : R$ %.2f\n",
-            this.Produto.getNome(), this.Produto.getCodigo(), qtd, this.valorTotal()
-            );
+            "Valor      : R$ %.2f\n" +
+            "Icms       : R$ %.2f\n" +
+            "Valor Total: R$ %.2f\n",
+            this.Produto.getNome(), this.Produto.getCodigo(), qtd, 
+            this.subTotal(),this.icmsTotal(), this.valorTotal()
+            ); 
     }
 
     public void exibir(){
