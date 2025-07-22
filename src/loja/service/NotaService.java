@@ -6,14 +6,14 @@ import loja.model.Produto;
 import loja.model.Nota;
 
 public class NotaService {
-    
+    //atributo
     private Nota nota;
-
+    //construtor
     public NotaService(Nota nota){
 
         this.nota = nota;
     }
-
+    //procuta o index do item no carrinho
     private int procurarIndexItem(Item item){
         
         for(int i = 0; i < nota.getTamanho(); i++){
@@ -29,7 +29,7 @@ public class NotaService {
         return -1;
 
     }
-
+    //redimensiona o carrinho
     private void redimensionarCarrinho(){
 
         Item[] aux = new Item[nota.getTamanho() + 10];
@@ -43,7 +43,9 @@ public class NotaService {
         nota.setCarrinho(aux);
 
     }
-
+    // add item no carrinho e verifica se esse item ja está no carrinho assim somente mudando sua quantidade
+    
+        //parametro com o objeto item
     public void addItem(Item item){
 
         if(item.getProduto().getEstoque() > 0){
@@ -78,7 +80,7 @@ public class NotaService {
 
 
     }
-
+        //paramentro com o contrutor de item
     public void addItem(Produto produto, int qtd){
 
         Item item = ItemService.criarItem(produto, qtd);
@@ -87,7 +89,7 @@ public class NotaService {
 
 
     }
-
+        //parametro com um array de itens
     public void addItem(Item[] itens){
 
         for(int i = 0; i < itens.length; i++){
@@ -97,7 +99,8 @@ public class NotaService {
         }
 
     }
-
+    /*remove um item, caso a quantidade desse item passado 
+    como parametro não seja a mesma ele subtrai as quantidades*/
     public void removeItem(Item item){
 
         for(int i = 0; i < nota.getTamanho(); i++){

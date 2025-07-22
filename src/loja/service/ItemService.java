@@ -4,7 +4,7 @@ import loja.model.Item;
 import loja.model.Produto;
 
 public class ItemService {
-    
+    //valida se os parametros para construir um item estão corretos e retorna um item
     public static Item criarItem(Produto Produto, int qtd){
 
         if(qtd > 0){
@@ -22,7 +22,7 @@ public class ItemService {
         }else throw new IllegalArgumentException("Quantidade deve ser maior que zero");
 
     }
-
+    //atualiza a quantidade de um item apos validar os parametros passados
     public static void atualizarQuantidade(Item item,int qtd){
         
         if(qtd > 0){

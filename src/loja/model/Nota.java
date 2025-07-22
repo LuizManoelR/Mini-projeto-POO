@@ -10,6 +10,8 @@ import loja.utils.Operacoes;
 
 public class Nota{
 
+    //atributos
+
     private Cliente cliente;
 
     private String codigo;
@@ -23,7 +25,7 @@ public class Nota{
     private int tamanho;
    
     private Item[] carrinho;
-
+    //construtor
     public Nota(Cliente cliente){
 
         this.cliente = cliente;
@@ -40,6 +42,7 @@ public class Nota{
 
     }
 
+    //getters e setters
 
     public Cliente getCliente(){return cliente;}
 
@@ -58,6 +61,7 @@ public class Nota{
     public  void setCarrinho(Item[] carrinho){this.carrinho = carrinho;}
     public  void setCarrinho(int i, Item carrinho){this.carrinho[i] = carrinho;}
 
+    //calcula o valor total de todos os itens somando o subtotal com o imposto
     public BigDecimal valorTotal(){
 
         BigDecimal n = new BigDecimal("0");
@@ -71,6 +75,7 @@ public class Nota{
 
     }
 
+    //calcula o subtotal de todos itens
     public BigDecimal subTotal(){
 
         BigDecimal n = new BigDecimal("0");
@@ -83,6 +88,8 @@ public class Nota{
         return n;
 
     }
+
+    //calcula o icms de todos os itens
     public BigDecimal icmsTotal(){
 
         BigDecimal n = new BigDecimal("0");
@@ -95,7 +102,7 @@ public class Nota{
         return n;
 
     }
-    
+    //exibi a nota fiscal com os dados do cliente, a data e os itens
     public void exibir(){
         System.out.printf("-------------------------------- NOTA FISCAL --------------------------------\n\n");
         System.out.printf("%-11s: %-30s | %-7s: %-20s\n" + 

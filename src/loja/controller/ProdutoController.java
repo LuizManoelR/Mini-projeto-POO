@@ -1,21 +1,17 @@
-package loja.service;
+package loja.controller;
 
 import loja.model.Produto;
-import loja.utils.Operacoes;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class ProdutoController {
     // Atributos
     private List<Produto> produtos;
-    private Operacoes operacoes;
 
     // Construtores
     public ProdutoController(){
+        
         this.produtos = new ArrayList<>();
-        this.operacoes = new Operacoes();
     }
 
     public boolean addProduto(Produto produto){

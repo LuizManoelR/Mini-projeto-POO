@@ -5,19 +5,20 @@ import java.math.BigDecimal;
 import loja.utils.Operacoes;
 
 public class Item{
+    //atributos 
 
     private Produto Produto;
 
     private int qtd;
 
-
+    //construtor
     public Item(Produto Produto, int qtd){
 
         this.Produto = Produto;
         this.qtd = qtd;
             
     }
-
+    //setters e gettres
     public void setProduto(Produto Produto){
 
         this.Produto = Produto;
@@ -40,25 +41,25 @@ public class Item{
         return this.qtd;
 
     }
-
+    // calcula o subtotal de um item
     public BigDecimal subTotal(){
 
         return Operacoes.multiplicar(this.Produto.getPrecoVenda(), this.qtd);
 
     }
-
+    //calcula o imposto de um item
     public BigDecimal icmsTotal(){
 
         return Operacoes.multiplicar(this.Produto.getIcms(), this.qtd);
 
     }
-
+    //calcula o valor total somando o subtotal com o imposto
     public BigDecimal valorTotal(){
 
         return Operacoes.somar(subTotal(), icmsTotal());
 
     }
-
+    //metodo especifico de comparação de itens
     @Override
     public boolean equals(Object obj){
 
@@ -70,7 +71,7 @@ public class Item{
         return this.getProduto().getCodigo().equals(outro.getProduto().getCodigo());
 
     }
-
+    //transforma os dados do objeto em string
     public String toString(){
 
         return String.format(
@@ -84,7 +85,7 @@ public class Item{
             this.subTotal(),this.icmsTotal(), this.valorTotal()
             ); 
     }
-
+    //exibi os dados do objeto
     public void exibir(){
 
         System.out.println(this);

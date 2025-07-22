@@ -5,6 +5,8 @@ import loja.utils.Operacoes;
 
 public class Produto{
 
+    //atributos
+
     private String codigo;
 
     private String nome;
@@ -18,7 +20,7 @@ public class Produto{
     private BigDecimal icms;
 
     private static int ultimo = 1;
-
+    //construtor
     public Produto(String nome, int estoque, BigDecimal icms,BigDecimal precoCusto, BigDecimal precoVenda){
 
         this.codigo = String.format("P%04d", ultimo++);
@@ -33,7 +35,7 @@ public class Produto{
         
         this.icms = icms;
     }
-
+    //setters e getters
     public void setNome(String nome){
 
         this.nome = nome;
@@ -92,13 +94,13 @@ public class Produto{
         return icms;
 
     }
-
+    //calcula a margem de lucro
     public BigDecimal calcularMargemLucro(){
 
         return Operacoes.dividir(Operacoes.subtrair(this.precoVenda , this.precoCusto), this.precoVenda);
 
     }
-
+    //transforma as informações do objeto em string
     public String toString(){
 
         return String.format(
@@ -112,7 +114,7 @@ public class Produto{
             nome, codigo, estoque, precoCusto, precoVenda,icms,Operacoes.multiplicar(this.calcularMargemLucro(),100)
             );
     }
-
+    //exibi as informações do objeto
     public void exibir(){
 
         System.out.println(this);
