@@ -6,17 +6,20 @@ import java.math.BigDecimal;
 
 public class ProdutoService {
 
+    //atributos
+
     private BigDecimal margem;
     private BigDecimal icms;
 
+    //construtor
+
     public ProdutoService(Object margem , Object icms){
-
-        
-
         this.margem = (margem != null) ? Operacoes.toBigDecimal(margem) : new BigDecimal("0.30");
         this.icms = (icms != null) ? Operacoes.toBigDecimal(icms) : new BigDecimal("0.18");
             
     }
+
+    //setters e getters
 
     public void setMargem(BigDecimal margem){
 
@@ -40,6 +43,10 @@ public class ProdutoService {
         return icms;
     }
 
+    /*Cria o produto calculando o preco de venda a partir do custo e da margem de lucro definida,
+     *calculando o icms partir da taxa definida e do preço de venda e faz uma validação do estoque
+     *caso for passado um valor menor que zero, nesse caso o estoque sera definido como zero automaticamente
+     */
 
     public Produto criarProduto(String nome, int estoque, Object precoCusto){
 
@@ -53,7 +60,10 @@ public class ProdutoService {
         }else return new Produto(nome, 0 , Operacoes.multiplicar(precoVenda, icms) ,precoCustoAux, precoVenda);
 
     }
-
+            /*O preço venda tambem é passado como parametro, porem é verificado se como esse valor
+             * a margem de lucro será maior ou igual a definida, caso não seja sera definido automaticamente
+             * a partir da margem de lucro e custo
+             */
     public Produto criarProduto(String nome, int estoque, Object precoCusto, Object precoVenda){
         
         BigDecimal precoVendaPadrão = Operacoes.dividir(precoCusto, Operacoes.subtrair(1, margem));

@@ -3,16 +3,30 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Venda",
+      "name": "NotaService",
       "request": "launch",
-      "mainClass": "loja.model.Venda",
+      "mainClass": "loja.service.NotaService",
       "projectName": "appvendas_f0ce33ac"
     },
     {
       "type": "java",
-      "name": "ProdutoService",
+      "name": "Nota",
       "request": "launch",
-      "mainClass": "loja.service.ProdutoService"
+      "mainClass": "loja.model.Nota",
+      "projectName": "appvendas_f0ce33ac"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "loja.app.Main",
+      "projectName": "appvendas_f0ce33ac"
+    },
+    {
+      "type": "java",
+      "name": "Main",
+      "request": "launch",
+      "mainClass": "loja.app.Main"
     }
   ]
 }

@@ -1,14 +1,14 @@
 package loja.app;
 
-import loja.model.Item;
-import loja.model.Produto;
-import loja.model.Venda;
+import loja.view.InterfaceLoja;
 
 public class Main {
 
     public static void main(String[] args){
 
-        
+        InterfaceLoja interfaceLoja = new InterfaceLoja();
+
+        interfaceLoja.iniciar();
 
     }
 
