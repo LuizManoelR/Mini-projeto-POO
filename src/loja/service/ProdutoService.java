@@ -10,9 +10,6 @@ public class ProdutoService {
     private BigDecimal icms;
 
     public ProdutoService(Object margem , Object icms){
-
-        
-
         this.margem = (margem != null) ? Operacoes.toBigDecimal(margem) : new BigDecimal("0.30");
         this.icms = (icms != null) ? Operacoes.toBigDecimal(icms) : new BigDecimal("0.18");
             
