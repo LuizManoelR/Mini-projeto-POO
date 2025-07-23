@@ -1,13 +1,24 @@
 package loja.view;
 
 import java.util.Scanner;
+import loja.controller.ClienteController;
+import loja.controller.NotaController;
+import loja.controller.ProdutoController;
 
 public class InterfaceLoja {
 
     private Scanner scanner;
+    
+    private ClienteController clienteController;
+    private ProdutoController produtoController;
+    private NotaController notaController;
+
 
     public InterfaceLoja() {
         scanner = new Scanner(System.in);
+        clienteController = new ClienteController();
+        produtoController = new ProdutoController();
+        notaController = new NotaController();
     }
 
     public void iniciar() {
@@ -65,15 +76,15 @@ public class InterfaceLoja {
     }
 
     private void cadastrarCliente() {
-        System.out.println("[Interface] → Cadastrar Cliente (função ainda não implementada)");
+        InterfaceCliente.cadastrarCliente(clienteController);
     }
 
     private void alterarCliente() {
-        System.out.println("[Interface] → Alterar Cliente (função ainda não implementada)");
+        InterfaceCliente.alterarCliente(clienteController);;
     }
 
     private void criarNotaCompra() {
-        System.out.println("[Interface] → Criar Nota de Compra (função ainda não implementada)");
+        InterfaceNota.exibir(produtoController, clienteController, notaController);
     }
 
     private void listarNotas() {
@@ -85,7 +96,7 @@ public class InterfaceLoja {
     }
 
     private void listarClientes() {
-        System.out.println("[Interface] → Listar Clientes (função ainda não implementada)");
+        InterfaceCliente.listarClientes(clienteController);
     }
 
     // ========== MAIN ==========

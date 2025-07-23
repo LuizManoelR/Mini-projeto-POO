@@ -8,45 +8,10 @@ import loja.model.Cliente;
 
 public class InterfaceCliente {
 
-    public static void exibirMenu(ClienteController clienteController) {
-        int opcao;
-        Scanner scanner = new Scanner(System.in);
+       
+    private static Scanner scanner = new Scanner(System.in);
 
-        do {
-            System.out.println("\n--- Menu Cliente ---");
-            System.out.println("1. Cadastrar Cliente");
-            System.out.println("2. Alterar Cliente");
-            System.out.println("3. Listar Clientes");
-            System.out.println("4. Buscar Cliente por CPF");
-            System.out.println("0. Voltar ao menu principal");
-            System.out.print("Escolha uma opção: ");
-            opcao = scanner.nextInt();
-            scanner.nextLine(); // limpar buffer
-
-            switch (opcao) {
-                case 1:
-                    cadastrarCliente(clienteController, scanner);
-                    break;
-                case 2:
-                    alterarCliente(clienteController, scanner);
-                    break;
-                case 3:
-                    listarClientes(clienteController);
-                    break;
-                case 4:
-                    buscarClientePorCpf(clienteController, scanner);
-                    break;
-                case 0:
-                    System.out.println("Voltando ao menu principal...");
-                    break;
-                default:
-                    System.out.println("Opção inválida.");
-            }
-
-        } while (opcao != 0);
-    }
-
-    private static void cadastrarCliente(ClienteController clienteController, Scanner scanner) {
+    public static void cadastrarCliente(ClienteController clienteController) {
         System.out.println("\n--- Cadastro de Cliente ---");
         System.out.print("CPF: ");
         String cpf = scanner.nextLine();
@@ -65,7 +30,7 @@ public class InterfaceCliente {
         }
     }
 
-    private static void alterarCliente(ClienteController clienteController, Scanner scanner) {
+    public static void alterarCliente(ClienteController clienteController) {
         System.out.println("\n--- Alteração de Cliente ---");
         System.out.print("CPF do cliente a alterar: ");
         String cpf = scanner.nextLine();
@@ -84,7 +49,7 @@ public class InterfaceCliente {
         }
     }
 
-    private static void listarClientes(ClienteController clienteController) {
+    public static void listarClientes(ClienteController clienteController) {
         System.out.println("\n--- Lista de Clientes ---");
         List<Cliente> clientes = clienteController.listarClientes();
         if (clientes.isEmpty()) {
@@ -100,7 +65,7 @@ public class InterfaceCliente {
         }
     }
 
-    private static void buscarClientePorCpf(ClienteController clienteController, Scanner scanner) {
+    public static void buscarClientePorCpf(ClienteController clienteController) {
         System.out.println("\n--- Buscar Cliente por CPF ---");
         System.out.print("Informe o CPF: ");
         String cpf = scanner.nextLine();
@@ -112,6 +77,12 @@ public class InterfaceCliente {
         } else {
             System.out.println("Cliente não encontrado.");
         }
+    }public static void main(String[] args){
+
+       
+        
+
+
     }
 }
 

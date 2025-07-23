@@ -3,6 +3,27 @@
   "configurations": [
     {
       "type": "java",
+      "name": "InterfaceCliente",
+      "request": "launch",
+      "mainClass": "loja.view.InterfaceCliente",
+      "projectName": "appvendas_f0ce33ac"
+    },
+    {
+      "type": "java",
+      "name": "InterfaceLoja",
+      "request": "launch",
+      "mainClass": "loja.view.InterfaceLoja",
+      "projectName": "appvendas_f0ce33ac"
+    },
+    {
+      "type": "java",
+      "name": "InterfaceNota",
+      "request": "launch",
+      "mainClass": "loja.view.InterfaceNota",
+      "projectName": "appvendas_f0ce33ac"
+    },
+    {
+      "type": "java",
       "name": "ItemService",
       "request": "launch",
       "mainClass": "loja.service.ItemService",
