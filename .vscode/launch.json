@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "InterfaceCliente",
+      "request": "launch",
+      "mainClass": "loja.view.InterfaceCliente",
+      "projectName": "appvendas_f0ce33ac"
+    },
+    {
+      "type": "java",
       "name": "InterfaceLoja",
       "request": "launch",
       "mainClass": "loja.view.InterfaceLoja",

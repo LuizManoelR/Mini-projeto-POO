@@ -76,11 +76,11 @@ public class InterfaceLoja {
     }
 
     private void cadastrarCliente() {
-        System.out.println("[Interface] → Cadastrar Cliente (função ainda não implementada)");
+        InterfaceCliente.cadastrarCliente(clienteController);
     }
 
     private void alterarCliente() {
-        System.out.println("[Interface] → Alterar Cliente (função ainda não implementada)");
+        InterfaceCliente.alterarCliente(clienteController);;
     }
 
     private void criarNotaCompra() {
@@ -96,7 +96,7 @@ public class InterfaceLoja {
     }
 
     private void listarClientes() {
-        System.out.println("[Interface] → Listar Clientes (função ainda não implementada)");
+        InterfaceCliente.listarClientes(clienteController);
     }
 
     // ========== MAIN ==========
