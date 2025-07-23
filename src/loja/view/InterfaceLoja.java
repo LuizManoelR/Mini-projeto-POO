@@ -68,11 +68,11 @@ public class InterfaceLoja {
     // ========== MÉTODOS PLACEHOLDER ==========
 
     private void cadastrarProduto() {
-        System.out.println("[Interface] → Cadastrar Produto (função ainda não implementada)");
+        InterfaceProduto.cadastrarProduto(produtoController, scanner);;
     }
 
     private void alterarProduto() {
-        System.out.println("[Interface] → Alterar Produto (função ainda não implementada)");
+        InterfaceProduto.alterarProduto(produtoController, scanner);;
     }
 
     private void cadastrarCliente() {
@@ -88,11 +88,11 @@ public class InterfaceLoja {
     }
 
     private void listarNotas() {
-        System.out.println("[Interface] → Listar Notas Emitidas (função ainda não implementada)");
+        notaController.exibirNotasRegistradas();
     }
 
     private void listarProdutos() {
-        System.out.println("[Interface] → Listar Produtos (função ainda não implementada)");
+        produtoController.listarProdutos();;
     }
 
     private void listarClientes() {

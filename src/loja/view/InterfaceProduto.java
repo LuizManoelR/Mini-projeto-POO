@@ -2,13 +2,14 @@ package loja.view;
 
 import loja.controller.ProdutoController;
 import loja.model.Produto;
+import loja.service.ProdutoService;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class InterfaceProduto {
 
-    private static Scanner scanner = new Scanner(System.in);
+    /*public static Scanner scanner = new Scanner(System.in);
     
     public static void exibirMenu(ProdutoController produtoController) {
         int opcao;
@@ -46,38 +47,37 @@ public class InterfaceProduto {
             }
 
         } while (opcao != 0);
-    }
+    }*/
 
-    private static void cadastrarProduto(ProdutoController controller) {
+    public static void cadastrarProduto(ProdutoController controller, Scanner scanner) {
         System.out.println("\n--- Cadastrar Produto ---");
-        System.out.print("Código: ");
-        String codigo = scanner.nextLine();
         System.out.print("Nome: ");
         String nome = scanner.nextLine();
-        System.out.print("Preço: ");
-        double preco = scanner.nextDouble();
+        System.out.print("Preço Custo: ");
+        float preco = scanner.nextFloat();
+        System.out.print("Estoque: ");
+        int estoque = scanner.nextInt();
         scanner.nextLine(); // limpar buffer
-
-        Produto produto = new Produto(nome, 0, null, null, null);
+        
+        ProdutoService ps = new ProdutoService(null, null);
+        Produto produto = ps.criarProduto(nome, estoque, preco);
         controller.addProduto(produto);
     }
 
-    private static void buscarPorCodigo(ProdutoController controller) {
+    public static void buscarPorCodigo(ProdutoController controller, Scanner scanner) {
         System.out.print("\nDigite o código do produto: ");
         String codigo = scanner.nextLine();
 
         Produto produto = controller.buscarProduto(codigo);
         if (produto != null) {
             System.out.println("Produto encontrado:");
-            System.out.println("Código: " + produto.getCodigo());
-            System.out.println("Nome: " + produto.getNome());
-            System.out.println("Preço: R$" + produto.getPreco());
+            produto.exibir();
         } else {
             System.out.println("Produto não encontrado.");
         }
     }
 
-    private static void buscarPorNome(ProdutoController controller) {
+    /*public static void buscarPorNome(ProdutoController controller, Scanner scanner) {
         System.out.print("\nDigite parte do nome do produto: ");
         String nome = scanner.nextLine();
 
@@ -90,13 +90,22 @@ public class InterfaceProduto {
                 System.out.println("Código: " + p.getCodigo() + ", Nome: " + p.getNome() + ", Preço: R$" + p.getPreco());
             }
         }
-    }
+    }*/
 
-    private static void removerProduto(ProdutoController controller) {
-        System.out.print("\nDigite o código do produto a remover: ");
+    public static void alterarProduto(ProdutoController controller, Scanner scanner) {
+        
+        System.out.println("\n--- Alterar Produto ---");
+        System.out.print("codigo: ");
         String codigo = scanner.nextLine();
+        System.out.print("Nome: ");
+        String nome = scanner.nextLine();
+        System.out.print("Preço Custo: ");
+        float preco = scanner.nextFloat();
+        System.out.print("Estoque: ");
+        int estoque = scanner.nextInt();
+        scanner.nextLine(); // limpar buffer
 
-        controller.removeProduto(codigo);
+        controller.alterarProduto(codigo, nome, estoque, preco);
     }
 }
 

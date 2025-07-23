@@ -1,6 +1,8 @@
 package loja.controller;
 
 import loja.model.Produto;
+import loja.service.ProdutoService;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +29,34 @@ public class ProdutoController {
         System.out.println("Produto adicionado com sucesso: " + produto.getNome());
         return true;
 
+    }
+
+    public void alterarProduto(String codigo, String nome, int estoque, float precoCusto){
+        
+        ProdutoService ps = new ProdutoService(null, null);
+
+        for(int i = 0; i < produtos.size(); i++){
+
+            if(produtos.get(i).getCodigo().equalsIgnoreCase(codigo)){
+
+                produtos.set(i, ps.criarProduto(nome, estoque, precoCusto));
+
+            }
+            
+
+        }
+
+    }
+
+    public void listarProdutos(){
+
+        System.out.println("------ Lista de Produtos --------");
+        for (int i = 0; i < produtos.size(); i++){
+
+            produtos.get(i).exibir();
+
+        }
+        System.out.println("------ Lista de Produtos --------");
     }
 
     public boolean removeProduto(String codigo) {
