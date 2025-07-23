@@ -1,13 +1,24 @@
 package loja.view;
 
 import java.util.Scanner;
+import loja.controller.ClienteController;
+import loja.controller.NotaController;
+import loja.controller.ProdutoController;
 
 public class InterfaceLoja {
 
     private Scanner scanner;
+    
+    private ClienteController clienteController;
+    private ProdutoController produtoController;
+    private NotaController notaController;
+
 
     public InterfaceLoja() {
         scanner = new Scanner(System.in);
+        clienteController = new ClienteController();
+        produtoController = new ProdutoController();
+        notaController = new NotaController();
     }
 
     public void iniciar() {
@@ -73,7 +84,7 @@ public class InterfaceLoja {
     }
 
     private void criarNotaCompra() {
-        System.out.println("[Interface] → Criar Nota de Compra (função ainda não implementada)");
+        InterfaceNota.exibir(produtoController, clienteController, notaController);
     }
 
     private void listarNotas() {

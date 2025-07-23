@@ -75,7 +75,7 @@ public class ProdutoController {
         }
 
         for (Produto produto : produtos){
-            if (produto.getCodigo().equals(codigo.trim())){
+            if (produto.getCodigo().equalsIgnoreCase(codigo.trim())){
                 return produto; // se encontrar, retorna o produto
             }
         }

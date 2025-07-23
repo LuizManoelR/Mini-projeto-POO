@@ -118,5 +118,9 @@ public class InterfaceCliente {
         } else {
             System.out.println("Cliente não encontrado.");
         }
+    }public static void main(String[] args){
+
+        
+
     }
 }
