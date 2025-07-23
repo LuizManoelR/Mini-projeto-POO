@@ -43,7 +43,7 @@ public class Produto{
 
     public void setEstoque(int estoque){
 
-        this.estoque = estoque;
+            this.estoque = estoque;
     }
 
     public void setPrecoCusto(BigDecimal precoCusto){

@@ -3,6 +3,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "ItemService",
+      "request": "launch",
+      "mainClass": "loja.service.ItemService",
+      "projectName": "appvendas_f0ce33ac"
+    },
+    {
+      "type": "java",
+      "name": "NotaController",
+      "request": "launch",
+      "mainClass": "loja.controller.NotaController",
+      "projectName": "appvendas_f0ce33ac"
+    },
+    {
+      "type": "java",
       "name": "NotaService",
       "request": "launch",
       "mainClass": "loja.service.NotaService",

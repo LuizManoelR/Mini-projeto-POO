@@ -8,10 +8,17 @@ import loja.model.Nota;
 public class NotaService {
     //atributo
     private Nota nota;
+    
     //construtor
+
+
     public NotaService(Nota nota){
 
         this.nota = nota;
+    }
+    public NotaService(Cliente cliente){
+
+        this.nota = new Nota(cliente);
     }
     //procuta o index do item no carrinho
     private int procurarIndexItem(Item item){
@@ -29,6 +36,13 @@ public class NotaService {
         return -1;
 
     }
+
+    //Setters e getters
+
+    public void setNota(Nota nota){this.nota = nota;}
+
+    public Nota getNota(){return nota;}
+
     //redimensiona o carrinho
     private void redimensionarCarrinho(){
 
