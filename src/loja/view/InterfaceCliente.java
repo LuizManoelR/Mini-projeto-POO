@@ -9,9 +9,8 @@ import loja.model.Cliente;
 public class InterfaceCliente {
 
        
-    private static Scanner scanner = new Scanner(System.in);
 
-    public static void cadastrarCliente(ClienteController clienteController) {
+    public static void cadastrarCliente(ClienteController clienteController, Scanner scanner) {
         System.out.println("\n--- Cadastro de Cliente ---");
         System.out.print("CPF: ");
         String cpf = scanner.nextLine();
@@ -30,7 +29,7 @@ public class InterfaceCliente {
         }
     }
 
-    public static void alterarCliente(ClienteController clienteController) {
+    public static void alterarCliente(ClienteController clienteController, Scanner scanner) {
         System.out.println("\n--- Alteração de Cliente ---");
         System.out.print("CPF do cliente a alterar: ");
         String cpf = scanner.nextLine();
@@ -49,7 +48,7 @@ public class InterfaceCliente {
         }
     }
 
-    public static void listarClientes(ClienteController clienteController) {
+    public static void listarClientes(ClienteController clienteController, Scanner scanner) {
         System.out.println("\n--- Lista de Clientes ---");
         List<Cliente> clientes = clienteController.listarClientes();
         if (clientes.isEmpty()) {
@@ -65,7 +64,7 @@ public class InterfaceCliente {
         }
     }
 
-    public static void buscarClientePorCpf(ClienteController clienteController) {
+    public static void buscarClientePorCpf(ClienteController clienteController, Scanner scanner) {
         System.out.println("\n--- Buscar Cliente por CPF ---");
         System.out.print("Informe o CPF: ");
         String cpf = scanner.nextLine();

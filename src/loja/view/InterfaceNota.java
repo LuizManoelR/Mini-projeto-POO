@@ -15,11 +15,10 @@ import loja.model.Produto;
 
 public class InterfaceNota {
 
-    public static void exibir(ProdutoController pc, ClienteController cc, NotaController nc){
+    public static void exibir(ProdutoController pc, ClienteController cc, NotaController nc, Scanner scanner){
 
         System.out.println("----------------- Nota Fiscal -----------------\n\n");
         
-        Scanner scanner = new Scanner(System.in);
         String cpf;
         do{
         System.out.println("Insira o CPF do cliente (ou 'sair' para cancelar).....\n");
@@ -85,7 +84,6 @@ public class InterfaceNota {
                 
             }
             
-            scanner.close();
             nc.addNota(ns.getNota());
             ns.getNota().exibir();
         }else System.out.println("saindo.....");
@@ -108,7 +106,7 @@ public class InterfaceNota {
 
         pc.addProduto(p1);
 
-        exibir(pc, cc, nc);
+        
 
    }
 }

@@ -76,15 +76,15 @@ public class InterfaceLoja {
     }
 
     private void cadastrarCliente() {
-        InterfaceCliente.cadastrarCliente(clienteController);
+        InterfaceCliente.cadastrarCliente(clienteController, scanner);
     }
 
     private void alterarCliente() {
-        InterfaceCliente.alterarCliente(clienteController);;
+        InterfaceCliente.alterarCliente(clienteController, scanner);;
     }
 
     private void criarNotaCompra() {
-        InterfaceNota.exibir(produtoController, clienteController, notaController);
+        InterfaceNota.exibir(produtoController, clienteController, notaController, scanner);
     }
 
     private void listarNotas() {
@@ -96,7 +96,7 @@ public class InterfaceLoja {
     }
 
     private void listarClientes() {
-        InterfaceCliente.listarClientes(clienteController);
+        InterfaceCliente.listarClientes(clienteController, scanner);
     }
 
     // ========== MAIN ==========
